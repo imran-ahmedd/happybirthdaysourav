@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>শুভ জন্মদিন সৌরভ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600&family=Tiro+Bangla&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<canvas id="fw-canvas"></canvas>
+
+<div class="scene">
+
+  <!-- STEP 0 : Gift Box -->
+  <div class="step active" data-step="0">
+    <div class="eyebrow">সৌরভের জন্য</div>
+    <h1>একটা ছোট্ট চমক অপেক্ষা করছে</h1>
+    <div class="gift-wrap" id="giftWrap">
+      <div class="cube" id="cube">
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face bottom"></div>
+        <div class="lid-hinge" id="lidHinge">
+          <div class="lid-face top">
+            <div class="bow"><div class="bow-knot"></div></div>
+          </div>
+        </div>
+        <div class="glow-inside"></div>
+      </div>
+    </div>
+    <div class="tap-label" id="giftHint">ঢাকনাটা ধরে ওপরের দিকে টেনে খোলো</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step" data-step="1">
+    <div class="eyebrow">খোলা হয়ে গেলো</div>
+    <h2>ভেতরে একটা কথা লেখা ছিল</h2>
+    <p class="msg">আজকের দিনটা তোমার। পৃথিবীটা আজ যেন একটু বেশি রঙিন, কারণ আজ যার জন্মদিন সে সৌরভ — যাকে ছাড়া আমাদের আড্ডাটাই ঠিক জমে না।</p>
+    <button class="next-btn" data-next>পরের চমক</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step" data-step="2">
+    <div class="eyebrow">দ্বিতীয় কথা</div>
+    <h2>তুই যা, ঠিক সেভাবেই থাক</h2>
+    <p class="msg">তোর হাসিটা অনেকের খারাপ দিন ভালো করে দেয় — এটা তুই হয়তো নিজেও জানিস না। বন্ধু হিসেবে তোকে পাওয়াটা সত্যিই ভাগ্যের ব্যাপার।</p>
+    <button class="next-btn" data-next>আরেকটু আছে</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step" data-step="3">
+    <div class="eyebrow">তৃতীয় কথা</div>
+    <h2>এই বছরটা তোর হোক</h2>
+    <p class="msg">তুই যা চাস, যতটা চাস, তার চেয়ে বেশি পাস — এই দোয়াই রইলো। সামনে যা কিছু আসুক, পাশে থাকার জন্য আমরা তো আছিই।</p>
+    <button class="next-btn" data-next>একদম শেষ ধাপ</button>
+  </div>
+
+  <!-- STEP 4 : final build up -->
+  <div class="step" data-step="4">
+    <div class="eyebrow">শেষ ধাপ</div>
+    <h2>এবার আসল চমকের পালা</h2>
+    <p class="msg">চোখ বন্ধ করে একটা ইচ্ছা মনে মনে ভাবো... তারপর নিচের বোতামে চাপ দাও। কিছু একটা অপেক্ষা করছে তোমার জন্য।</p>
+    <button class="next-btn" data-next>রেডি আছি</button>
+  </div>
+
+  <!-- STEP 5 : Cake + matchstick + fireworks scene -->
+  <div class="step" data-step="5">
+    <div class="cake-stage" id="cakeStage">
+      <div class="eyebrow">শুভ জন্মদিন</div>
+
+      <div class="cake-wrap">
+        <div class="cake" id="cake">
+          <div class="tier top">
+            <div class="drip"></div>
+            <div class="plaque">সৌরভ</div>
+            <div class="sparkler" id="sparkler">
+              <div class="sparkler-stick"></div>
+              <div class="sparkler-glow" id="sparklerGlow"></div>
+            </div>
+          </div>
+          <div class="tier bottom"><div class="drip"></div></div>
+        </div>
+        <div class="cake-plate"></div>
+        <div class="table-shadow"></div>
+      </div>
+
+      <div class="match-rig" id="matchRig">
+        <div class="strikebox" id="strikebox">
+          <div class="strike-strip"></div>
+        </div>
+        <div class="matchstick" id="matchstick">
+          <div class="mflame" id="mflame"></div>
+          <div class="head"></div>
+          <div class="stem"></div>
+        </div>
+      </div>
+
+      <div class="scene-caption" id="sceneCaption">দিয়াশলাইয়ের কাঠিটা ধরে বাক্সের গায়ে সামনে-পেছনে ঘষো</div>
+
+      <div class="finale" id="finale">
+        <h1>শুভ জন্মদিন সৌরভ</h1>
+        <p>মোমবাতির আলোটা যতটুকু, তার চেয়ে অনেক বেশি আলো তুই আমাদের জীবনে এনে দিস। ভালো থাকিস, হাসিখুশি থাকিস — সবসময়।</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/fireworks.js"></script>
+<script src="js/giftbox.js"></script>
+<script src="js/matchbox.js"></script>
+<script src="js/cake.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
