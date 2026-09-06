@@ -350,6 +350,11 @@ h1,h2{ font-family:'Baloo Da 2', sans-serif; margin:0 0 14px 0; font-weight:700;
 .matchstick.spent{ opacity:.4; }
 .matchstick.spent .head{ background:linear-gradient(180deg,#3a3a3a,#1c1c1c); }
 
+/* subtle cue while the lit flame is closing in on the wick */
+.matchstick.near-target .mflame{ transform:translateX(-50%) scale(1.15); }
+.matchstick.near-target .mflame::before{ filter:brightness(1.3) saturate(1.15); }
+.sparkler.match-near .sparkler-glow{ opacity:.6; }
+
 .scene-caption{
   margin-top:20px; font-size:13px; color:var(--gold-soft); opacity:.65;
   min-height:18px; transition:opacity .3s ease;
