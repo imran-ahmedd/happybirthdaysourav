@@ -26,7 +26,8 @@ class MatchSystem {
     this.homePos = null; // filled on first pointerdown
     this.grabOffset = { x: 0, y: 0 };
     this.targetEl = null;
-    this.targetHitRadius = 46;
+    this.targetHitRadius = 52;
+    this.nearHitRadius = 90;
     this.onLit = null;
 
     this._bind();
@@ -118,14 +119,32 @@ class MatchSystem {
         const head = this._headPosition();
         const c = this._rectCenter(this.targetEl);
         const dist = Math.hypot(head.x - c.x, head.y - c.y);
-        this.matchEl.classList.toggle("near-target", dist < this.targetHitRadius * 1.6);
+
+        this.matchEl.classList.toggle("near-target", dist < this.nearHitRadius);
+        this.targetEl.classList.toggle("match-near", dist < this.nearHitRadius);
+
+        // Ignite as soon as the flame reaches the wick - no need to
+        // time a precise release, dragging close is enough (feels
+        // like actually touching a flame to a candle).
+        if (dist < this.targetHitRadius) {
+          this._deliverToTarget(c);
+        }
       }
     }
   }
 
   _headPosition() {
+    // Track the actual flame element rather than approximating from the
+    // stick's own box - the flame renders above the stick (negative
+    // offset), so using the stick's rect alone puts the hit point well
+    // below where the fire visually is.
+    if (this.mflameEl) {
+      const r = this.mflameEl.getBoundingClientRect();
+      if (r.width > 0 || r.height > 0) {
+        return { x: r.left + r.width / 2, y: r.top + r.height * 0.4 };
+      }
+    }
     const rect = this.matchEl.getBoundingClientRect();
-    // head sits near the top of the stick
     return { x: rect.left + rect.width / 2, y: rect.top + 4 };
   }
 
@@ -159,6 +178,7 @@ class MatchSystem {
       // missed - keep it lit, just settle in place (still carryable)
       this.mode = "idle-lit";
       this.matchEl.classList.remove("near-target");
+      if (this.targetEl) this.targetEl.classList.remove("match-near");
     }
   }
 
@@ -168,6 +188,7 @@ class MatchSystem {
     this.matchEl.classList.remove("near-target");
     this.matchEl.classList.remove("lit");
     this.matchEl.classList.add("spent");
+    if (this.targetEl) this.targetEl.classList.remove("match-near");
 
     // move the match just behind the target point, then fade it out
     this.matchEl.style.left = (centerPoint.x - 3) + "px";
